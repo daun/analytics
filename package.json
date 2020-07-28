@@ -1,6 +1,6 @@
 {
   "name": "@daun/analytics",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Best practice analytics.js implementation",
   "main": "src/index.js",
   "scripts": {
@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/daun/analyticsjs-boilerplate#readme",
   "devDependencies": {
-    "autotrack": "^2.3.2",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",
@@ -44,6 +43,7 @@
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
+    "autotrack": "^2.4.1",
     "load-script-once": "^2.0.1"
   }
 }
