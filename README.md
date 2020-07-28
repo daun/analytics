@@ -1,12 +1,14 @@
-# Analytics.js Boilerplate
+# Analytics Boilerplate
+
+Easy way to get up and running with Google Analytics.
 
 Personalized version of the original
 [analyticsjs-boilerplate](https://github.com/philipwalton/analyticsjs-boilerplate),
 with a few additions:
 
 - Make it configurable by passing options on `init()`
-- Autoload the `analytics.js` script
 - Allow sending custom events and page views
+- Autoload the `analytics.js` script
 
 ## Installation
 
@@ -14,6 +16,80 @@ with a few additions:
 npm install @daun/analytics
 ```
 
+## Usage
+
+The library **automatically loads the Google Analytics library**.
+
+### Async
+
+Recommended: load tracking code lazily so it's non-blocking.
+
+```js
+import('@daun/analytics').then(analytics => {
+  analytics.init({ /* options */ })
+})
+```
+
+### Sync
+
+Only recommended for standalone entrypoints.
+
+```js
+import { init } from '@daun/analytics'
+
+init({ /* options */ })
+```
+
+## API
+
+### init
+
+Setup the tracker and set initial values.
+
+```js
+init({
+  trackingId: 'UA-X-XXXXXX',
+  timeZone: 'Europe/London'
+})
+```
+
+**Options**
+
+- `trackingId` → Google Analytics tracking ID, required
+- `timeZone` → Time zone (default: Europe/London)
+- `anonymizeIp` → Anonymize last IP octet? (default: true)
+- `removeTrailingSlash` → Remove trailing slash (default: true)
+
+### trackEvent
+
+Track a custom event.
+
+```js
+trackEvent({
+  eventCategory: 'Video',
+  eventAction: 'play',
+  eventLabel: 'Video title'
+})
+```
+
+### trackPageview
+
+Track a page view. This should only be required in rare cases where
+autotracking URL changes is not sufficient.
+
+```js
+trackPageview('/some/page')
+```
+
+## Autotrack
+
+This setup includes a few useful [autotrack](https://github.com/googleanalytics/autotrack) plugins:
+
+- clean-url-tracker
+- max-scroll-tracker
+- outbound-link-tracker
+- page-visibility-tracker
+- url-change-tracker
 
 # Original Readme
 
