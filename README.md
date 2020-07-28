@@ -1,5 +1,19 @@
 # Analytics.js Boilerplate
 
+Personalized version of the original
+[analyticsjs-boilerplate](https://github.com/philipwalton/analyticsjs-boilerplate),
+with a few additions:
+
+- Make it configurable by passing options on `init()`
+- Autoload the `analytics.js` script
+- Allow sending custom events and page views
+
+## Installation
+
+```bash
+npm install @daun/analytics
+```
+
 
 # Original Readme
 
