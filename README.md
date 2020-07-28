@@ -1,4 +1,7 @@
-# analytics.js boilerplate
+# Analytics.js Boilerplate
+
+
+# Original Readme
 
 Best practices for implementing analytics.js on modern websites.
 
