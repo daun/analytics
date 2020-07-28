@@ -6,3 +6,4 @@ node_modules
 
 # Compiled files
 build
+/.vscode/tasks.json
