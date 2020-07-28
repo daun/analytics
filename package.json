@@ -42,5 +42,8 @@
     "source-map-support": "^0.4.11",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "load-script-once": "^2.0.1"
   }
 }

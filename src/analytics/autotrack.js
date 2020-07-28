@@ -4,6 +4,7 @@ import 'autotrack/lib/plugins/max-scroll-tracker';
 import 'autotrack/lib/plugins/outbound-link-tracker';
 import 'autotrack/lib/plugins/page-visibility-tracker';
 import 'autotrack/lib/plugins/url-change-tracker';
+import load from 'load-script-once';
 
 
 /* global ga */
@@ -86,6 +87,7 @@ export const init = (opts = {}) => {
   // Merge defaults and options
   Object.assign(config, opts);
 
+  loadLibrary();
   createTracker();
   trackErrors();
   trackCustomDimensions();
@@ -93,6 +95,12 @@ export const init = (opts = {}) => {
   sendNavigationTimingMetrics();
 };
 
+/**
+ * Load analytics.js
+ */
+const loadLibrary = () => {
+  load('https://www.google-analytics.com/analytics.js');
+};
 
 /**
  * Tracks a JavaScript error with optional fields object overrides.
