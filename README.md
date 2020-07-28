@@ -1,14 +1,20 @@
-# Analytics Boilerplate
+# Analytics
 
 Easy way to get up and running with Google Analytics.
 
 Personalized version of the original
-[analyticsjs-boilerplate](https://github.com/philipwalton/analyticsjs-boilerplate),
-with a few additions:
+[Analytics.js Boilerplate](https://github.com/philipwalton/analyticsjs-boilerplate),
+with a few additions.
 
-- Make it configurable by passing options on `init()`
-- Allow sending custom events and page views
+- Tracks uncaught errors
+- Tracks custom user, session, and hit-level dimensions
+- Sends an initial pageview
+- Sends a pageload performance event
 - Autoload the `analytics.js` script
+- Supports sending custom events and page views
+
+See this article for an in-depth
+[explanation of the features](https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/) used.
 
 ## Installation
 
@@ -20,9 +26,7 @@ npm install @daun/analytics
 
 This package **automatically loads the Google Analytics library**.
 
-### Async
-
-Recommended: load tracking code lazily so it's non-blocking.
+Recommended: load the tracking code lazily so it's non-blocking.
 
 ```js
 import('@daun/analytics').then(analytics => {
@@ -30,9 +34,7 @@ import('@daun/analytics').then(analytics => {
 })
 ```
 
-### Sync
-
-Only recommended for standalone entrypoints.
+Synchronous import is possible, but only recommended for separate entrypoints.
 
 ```js
 import { init } from '@daun/analytics'
@@ -91,30 +93,42 @@ This setup includes a few useful [autotrack](https://github.com/googleanalytics/
 - page-visibility-tracker
 - url-change-tracker
 
-# Original Readme
+## Custom dimensions & metrics
 
-For an in-depth explanation of all the features used in this boilerplate (as well as how to report on them), see my article:
+The boilerplate scripts use several custom dimensions and metrics that you'll need to set up within Google Analytics.
 
-[**The Google Analytics Setup I Use on Every Site I Build**](https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/) &#8594;
+### Custom dimensions
 
-## Boilerplate versions
+These can be set up on Google Analytics by going to the `Admin` section, clicking on `Custom Definitions` in the `PROPERTY` column will reveal a link to `Custom Dimensions`.
 
-### [`analytics/base.js`](/src/analytics/base.js)
+Make sure the dimension index number in the admin panel matches up with the number appended to `dimension` for the corresponding key in the `dimensions` object in the script you use; i.e. if when you set up the `Hit Source` dimension it ends up with an index of `12`, then the `dimensions` object should include `HIT_SOURCE: 'dimension12'`.
 
-The base boilerplate extends the [default tracking snippet](https://developers.google.com/analytics/devguides/collection/analyticsjs/#alternative_async_tracking_snippet) and includes the following features:
+| Name             | Script reference   | Scope |
+| :-------------   | :-------------     | :---- |
+| Tracking Version | `TRACKING_VERSION` | Hit   |
+| Client ID        | `CLIENT_ID`        | User  |
+| Window ID        | `WINDOW_ID`        | Hit   |
+| Hit ID           | `HIT_ID`           | Hit   |
+| Hit Time         | `HIT_TIME`         | Hit   |
+| Hit Type         | `HIT_TYPE`         | Hit   |
+| Hit Source       | `HIT_SOURCE`       | Hit   |
+| Visibility State | `VISIBILITY_STATE` | Hit   |
+| Url Query Params | `URL_QUERY_PARAMS` | Hit   |
 
-- Tracks uncaught errors.
-- Tracks custom user, session, and hit-level dimensions.
-- Sends an initial pageview.
-- Sends a pageload performance event.
+### Custom metrics
 
-### [`analytics/autotrack.js`](/src/analytics/autotrack.js)
+These can be set up on Google Analytics by going to the `Admin` section, clicking on `Custom Definitions` in the `PROPERTY` column will reveal a link to `Custom Metrics`.
 
-The autotrack boilerplate builds on top the base boilerplate and includes [select autotrack plugins](https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/#using-autotrack-plugins)
+Make sure the metric index number in the admin panel matches up with the number appended to `metric` in the `metrics` object in the script you use; i.e. if when you set up the `Max Scroll Percentage` metric it ends up with an index of `9`, then the `metrics` object should include `MAX_SCROLL_PERCENTAGE: 'metric9'`.
 
-### [`analytics/multiple-trackers.js`](/src/analytics/multiple-trackers.js)
-
-The multiple-trackers boilerplate builds on the autotrack boilerplate and includes support for using [multiple trackers](https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/#testing-your-implementation).
+| Name                  | Script reference      | Scope | Formatting Type |
+| :-------------        | :-------------        | :---- | :-------------- |
+| Response End Time     | `RESPONSE_END_TIME`     | Hit   | Integer         |
+| DOM Load Time         | `DOM_LOAD_TIME`         | Hit   | Integer         |
+| Window Load Time      | `WINDOW_LOAD_TIME`      | Hit   | Integer         |
+| Page Visible          | `PAGE_VISIBLE`          | Hit   | Integer         |
+| Max Scroll Percentage | `MAX_SCROLL_PERCENTAGE` | Hit   | Integer         |
+| Page Loads            | `PAGE_LOADS`            | Hit   | Integer         |
 
 ## Running the boilerplate locally
 
