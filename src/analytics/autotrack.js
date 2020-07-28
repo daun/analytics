@@ -139,6 +139,16 @@ export const trackEvent = ({
   ga('send', 'event', {eventCategory, eventAction, eventLabel});
 };
 
+/**
+ * Manually sends a page view.
+ *
+ * @param {String} pathname
+ */
+export const trackPageview = (pathname) => {
+  const location =
+    pathname || window.location.pathname + window.location.search;
+  ga('send', 'pageview', location);
+};
 
 /**
  * Creates the trackers and sets the default transport and tracking
