@@ -127,8 +127,9 @@ export const trackError = (err = {}, fieldsObj = {}) => {
  * version fields. In non-production environments it also logs hits.
  */
 const createTracker = () => {
-
   ga('create', config.trackingId, 'auto');
+  // Anonymize IPs
+  ga('set', 'anonymizeIp', config.anonymizeIp);
   // Ensures all hits are sent via `navigator.sendBeacon()`.
   ga('set', 'transport', 'beacon');
 };
