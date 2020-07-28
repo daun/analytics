@@ -18,7 +18,7 @@ npm install @daun/analytics
 
 ## Usage
 
-The library **automatically loads the Google Analytics library**.
+This package **automatically loads the Google Analytics library**.
 
 ### Async
 
@@ -92,8 +92,6 @@ This setup includes a few useful [autotrack](https://github.com/googleanalytics/
 - url-change-tracker
 
 # Original Readme
-
-Best practices for implementing analytics.js on modern websites.
 
 For an in-depth explanation of all the features used in this boilerplate (as well as how to report on them), see my article:
 
