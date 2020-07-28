@@ -126,6 +126,19 @@ export const trackError = (err = {}, fieldsObj = {}) => {
   }, fieldsObj));
 };
 
+/**
+ * Sends a custom event.
+ *
+ * @param {Object} eventData
+ */
+export const trackEvent = ({
+  eventCategory,
+  eventAction,
+  eventLabel = config.nullValue,
+} = {}) => {
+  ga('send', 'event', {eventCategory, eventAction, eventLabel});
+};
+
 
 /**
  * Creates the trackers and sets the default transport and tracking
