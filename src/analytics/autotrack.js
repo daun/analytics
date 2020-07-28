@@ -42,6 +42,11 @@ const config = {
    * To anonymize the IP address for all hits, set this to true.
    */
   anonymizeIp: true,
+
+  /**
+   * To remove trailing slashes from urls, set this to true.
+   */
+  removeTrailingSlash: true,
 };
 
 
@@ -212,7 +217,7 @@ const requireAutotrackPlugins = () => {
   ga('require', 'cleanUrlTracker', {
     stripQuery: true,
     queryDimensionIndex: getDefinitionIndex(dimensions.URL_QUERY_PARAMS),
-    trailingSlash: 'remove',
+    trailingSlash: config.removeTrailingSlash ? 'remove' : null,
   });
   ga('require', 'maxScrollTracker', {
     sessionTimeout: 30,
