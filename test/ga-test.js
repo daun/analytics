@@ -1,7 +1,7 @@
 import assert from 'assert';
 import sinon from 'sinon';
 import qs from 'querystring';
-import * as analytics from '../../src/analytics/autotrack';
+import * as analytics from '../src/ga';
 
 
 const CLIENT_ID_PATTERN = /^\d+\.\d+$/;
