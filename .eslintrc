@@ -10,7 +10,8 @@
     "sourceType": "module"
   },
   "globals": {
-    "ga": false
+    "ga": false,
+    "fbq": false
   },
   "extends": [
     "eslint:recommended", "google"

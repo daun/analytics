@@ -38,7 +38,7 @@ const loadLibrary = () => {
  *
  * @param {Object} eventData
  */
-export const trackEvent = ({ eventName, eventData = {} } = {}) => {
+export const trackEvent = ({ eventName, eventData = null } = {}) => {
   fbq('track', eventName, eventData);
 };
 
