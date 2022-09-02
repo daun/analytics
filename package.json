@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/daun/analyticsjs-boilerplate.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Philip Walton",
     "email": "philip@philipwalton.com",
