@@ -38,8 +38,8 @@ const loadLibrary = () => {
  *
  * @param {Object} eventData
  */
-export const trackEvent = ({ eventName, eventData = null } = {}) => {
-  fbq('track', eventName, eventData);
+export const trackEvent = ({ eventName, eventID, ...eventData } = {}) => {
+  fbq('track', eventName, eventData, { eventID });
 };
 
 /**
@@ -47,8 +47,8 @@ export const trackEvent = ({ eventName, eventData = null } = {}) => {
  *
  * @param {Object} eventData
  */
-export const trackCustomEvent = ({ eventName, eventData = {} } = {}) => {
-  fbq('trackCustom', eventName, eventData);
+export const trackCustomEvent = ({ eventName, eventID, ...eventData } = {}) => {
+  fbq('trackCustom', eventName, eventData, { eventID });
 };
 
 /**
